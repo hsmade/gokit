@@ -24,7 +24,7 @@ func (O OkHandlerStruct) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func TestCombinedFormatAccessLogMiddleware(t *testing.T) {
+func TestApacheCombined(t *testing.T) {
 	tests := []struct {
 		name    string
 		request http.Request
@@ -73,7 +73,7 @@ func TestCombinedFormatAccessLogMiddleware(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			hook := logrusTest.NewGlobal()
 			w := httptest.NewRecorder()
-			CombinedFormatAccessLoggerMiddleware(OkHandlerStruct{}).ServeHTTP(w, &tt.request)
+			ApacheCombined(OkHandlerStruct{}).ServeHTTP(w, &tt.request)
 			assert.Equal(t, fmt.Sprintf(tt.want, time.Now().Format("02/Jan/2006 15:04:05 -0700")), hook.LastEntry().Message)
 		})
 	}

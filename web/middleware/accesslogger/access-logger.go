@@ -9,8 +9,8 @@ import (
 	"time"
 )
 
-// CombinedFormatAccessLoggerMiddleware apache combined log format
-func CombinedFormatAccessLoggerMiddleware(next http.Handler) http.Handler {
+// ApacheCombined apache combined log format
+func ApacheCombined(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		newW := negroni.NewResponseWriter(w)
 		next.ServeHTTP(newW, r)
