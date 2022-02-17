@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/sirupsen/logrus v1.8.1
-	github.com/stretchr/testify v1.2.2
+	github.com/stretchr/testify v1.7.0
 	github.com/urfave/negroni v1.0.0
 )
 
